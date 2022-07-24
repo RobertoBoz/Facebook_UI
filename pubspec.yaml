@@ -44,6 +44,7 @@ flutter:
     - assets/images/wallpapers/4.jpeg
     - assets/images/wallpapers/5.jpeg
     - assets/images/wallpapers/6.jpeg
+    - assets/images/logos/facebook.svg
 
 
   fonts:
