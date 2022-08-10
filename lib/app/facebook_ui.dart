@@ -1,5 +1,6 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 import 'package:facebook_ui/app/widgets/quick_actions.dart';
+import 'package:facebook_ui/app/widgets/stories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -32,12 +33,13 @@ class FacebookiU extends StatelessWidget {
            SizedBox(width: 15,),
         ],
         ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 15,).copyWith(top:20),
+        body: ListView(          
           children: const [
              WhatIsOnYourMind(),
              SizedBox(height: 25,),
-             QuickActions()
+             QuickActions(),
+            SizedBox(height: 25,),
+             Stories()
           ],
         ),
     );
