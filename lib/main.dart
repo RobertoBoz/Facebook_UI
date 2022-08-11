@@ -10,12 +10,16 @@ void main() {
 
     runApp( DevicePreview(
         enabled: !kReleaseMode,
-        builder: (context) => const MyApp(),),
-    );}
+        builder: (context) => const MyAppDev(),),
+    );
+  }else{
+    runApp(  const MyApp(),);
+
+  }
   }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyAppDev extends StatelessWidget {
+  const MyAppDev({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +30,24 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Nunito'
+      ),
+      home: const FacebookiU(),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'Nunito'
       ),
       home: const FacebookiU(),
     );
