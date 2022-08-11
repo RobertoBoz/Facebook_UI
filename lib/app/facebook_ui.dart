@@ -1,10 +1,11 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 import 'package:facebook_ui/app/widgets/quick_actions.dart';
 import 'package:facebook_ui/app/widgets/stories.dart';
+import 'package:facebook_ui/data/models/publications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:faker/faker.dart';
 import 'package:facebook_ui/Theme/custom_icons.dart';
 import 'package:facebook_ui/app/widgets/WhatIsOnYourMind.dart';
 import 'package:facebook_ui/app/widgets/circule_button.dart';
@@ -14,6 +15,29 @@ class FacebookiU extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final faker = Faker();
+    final publicationsList = <Publications>[];
+
+    for(int i = 0;i<50;i++){
+
+      const reactions = Reaction.values;
+      final reactionsIndex = faker.randomGenerator.integer(reactions.length-1);
+
+
+      final publication = Publications(
+          user: User(avatar: faker.image.image(), username: faker.person.name(),),
+          title: faker.lorem.sentence(), 
+          createdAt: faker.date.dateTime(), 
+          imageUrl: faker.image.image(),
+          commentsCount: faker.randomGenerator.integer(50000), 
+          shareCount: faker.randomGenerator.integer(50000), 
+          currentReaction: Reaction.values[reactionsIndex], 
+        );
+      publicationsList.add(publication);
+    }
+
+
+
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle:const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
