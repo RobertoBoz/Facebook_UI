@@ -10,6 +10,8 @@ import 'package:facebook_ui/Theme/custom_icons.dart';
 import 'package:facebook_ui/app/widgets/WhatIsOnYourMind.dart';
 import 'package:facebook_ui/app/widgets/circule_button.dart';
 
+import 'widgets/publications_items.dart';
+
 class FacebookiU extends StatelessWidget {
   const FacebookiU({Key? key}) : super(key: key);
 
@@ -57,13 +59,21 @@ class FacebookiU extends StatelessWidget {
            SizedBox(width: 15,),
         ],
         ),
-        body: ListView(          
-          children: const [
-             WhatIsOnYourMind(),
-             SizedBox(height: 25,),
-             QuickActions(),
-            SizedBox(height: 25,),
-             Stories()
+        body: ListView(    
+
+          children:  [
+             const WhatIsOnYourMind(),
+             const SizedBox(height: 25,),
+             const QuickActions(),
+             const SizedBox(height: 25,),
+             const Stories(),
+             const SizedBox(height: 20,),
+             ListView.builder( 
+              physics: const NeverScrollableScrollPhysics(), 
+              shrinkWrap: true,
+                itemCount: publicationsList.length,
+                itemBuilder: (context, index) => PublicationsItem(publications: publicationsList[index],) 
+              )
           ],
         ),
     );
