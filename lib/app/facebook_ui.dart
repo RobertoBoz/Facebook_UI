@@ -12,32 +12,49 @@ import 'package:facebook_ui/app/widgets/circule_button.dart';
 
 import 'widgets/publications_items.dart';
 
-class FacebookiU extends StatelessWidget {
+class FacebookiU extends StatefulWidget {
   const FacebookiU({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final faker = Faker();
+  State<FacebookiU> createState() => _FacebookiUState();
+}
+
+class _FacebookiUState extends State<FacebookiU> {
+
+  final faker = Faker();
     final publicationsList = <Publications>[];
+    @override
+  void initState() {
+     generated();
+    super.initState();
+  }
 
-    for(int i = 0;i<50;i++){
+    void generated(){
+      for(int i = 0;i<10;i++){
 
-      const reactions = Reaction.values;
-      final reactionsIndex = faker.randomGenerator.integer(reactions.length-1);
+        const reactions = Reaction.values;
+        final reactionsIndex = faker.randomGenerator.integer(reactions.length-1);
 
 
-      final publication = Publications(
-          user: User(avatar: faker.image.image(), username: faker.person.name(),),
-          title: faker.lorem.sentence(), 
-          createdAt: faker.date.dateTime(), 
-          imageUrl: faker.image.image(),
-          commentsCount: faker.randomGenerator.integer(50000), 
-          shareCount: faker.randomGenerator.integer(50000), 
-          currentReaction: Reaction.values[reactionsIndex], 
-        );
-      publicationsList.add(publication);
+        final publication = Publications(
+            user: User(avatar: faker.image.image(), username: faker.person.name(),),
+            title: faker.lorem.sentence(), 
+            createdAt: faker.date.dateTime(), 
+            imageUrl: faker.image.image(),
+            commentsCount: faker.randomGenerator.integer(50000), 
+            shareCount: faker.randomGenerator.integer(50000), 
+            currentReaction: Reaction.values[reactionsIndex], 
+          );
+        publicationsList.add(publication);
+      }
+
     }
 
+   
+
+  @override
+  Widget build(BuildContext context) {
+    
 
 
     return Scaffold(
@@ -66,13 +83,19 @@ class FacebookiU extends StatelessWidget {
              const SizedBox(height: 25,),
              const QuickActions(),
              const SizedBox(height: 25,),
-             const Stories(),
+             const Stories(key: ValueKey('value')),
              const SizedBox(height: 20,),
              ListView.builder( 
               physics: const NeverScrollableScrollPhysics(), 
               shrinkWrap: true,
                 itemCount: publicationsList.length,
-                itemBuilder: (context, index) => PublicationsItem(publications: publicationsList[index],) 
+                itemBuilder: (context, index) {
+                  if(  publicationsList.isEmpty){
+                    return const CircularProgressIndicator();
+
+                  }
+                  return PublicationsItem(publications: publicationsList[index],);
+                }
               )
           ],
         ),

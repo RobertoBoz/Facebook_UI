@@ -15,11 +15,11 @@ class QuickActions extends StatelessWidget {
         child: Row(
           
           children: const [
-              QuickButton(backgrond: Color(0xffebffe8), backgrondIcon: Color(0xffacd8a3), icon: CustomIcons.photos, label: 'Gallery',),
+              QuickButton(backgrond: Color(0xffebffe8), backgrondIcon: Color(0xffacd8a3), icon: Icons.photo_album, label: 'Gallery',),
                SizedBox(width: 10,),
-              QuickButton(backgrond: Color(0xffe9f2ff), backgrondIcon: Color(0xff85affb), icon: CustomIcons.userFriends, label: 'Tag Driends',),
+              QuickButton(backgrond: Color(0xffe9f2ff), backgrondIcon: Color(0xff85affb), icon: Icons.person, label: 'Tag Driends',),
               SizedBox(width: 10,),
-              QuickButton(backgrond: Color(0xfffde9e8), backgrondIcon: Color(0xfff9a897), icon: CustomIcons.videoCamera, label: 'Live',),
+              QuickButton(backgrond: Color(0xfffde9e8), backgrondIcon: Color(0xfff9a897), icon:Icons.video_camera_front, label: 'Live',),
           ],
         ),
       ),

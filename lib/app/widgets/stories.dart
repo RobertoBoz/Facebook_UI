@@ -20,20 +20,12 @@ final _stories =[
     username: 'Megan Lopez',
   ),
   Story(
-    bg: 'assets/images/wallpapers/4.jpeg', 
-    avatar: 'assets/images/users/4.jpg',
-    username: 'Vane Mejia',
+    bg: 'assets/images/wallpapers/3.jpeg', 
+    avatar: 'assets/images/users/3.jpg',
+    username: 'Megan Lopez',
   ),
-  Story(
-    bg: 'assets/images/wallpapers/5.jpeg', 
-    avatar: 'assets/images/users/5.jpg',
-    username: 'Yulisa Duran',
-  ),
-  Story(
-    bg: 'assets/images/wallpapers/6.jpeg', 
-    avatar: 'assets/images/users/6.jpg',
-    username: 'Saulo hernandez',
-  )  
+ 
+ 
 ];
 
 class Stories extends StatelessWidget {
