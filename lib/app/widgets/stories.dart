@@ -1,35 +1,54 @@
-import 'package:facebook_ui/app/widgets/avatar.dart';
 import 'package:facebook_ui/app/widgets/story_item.dart';
 import 'package:facebook_ui/data/models/story.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart' ;
 
-final _stories =[
-  Story(
-    bg: 'assets/images/wallpapers/1.jpeg', 
-    avatar: 'assets/images/users/1.jpg',
-    username: 'Juan Lopez',
-  ),
-  Story(
-    bg: 'assets/images/wallpapers/2.jpeg', 
-    avatar: 'assets/images/users/2.jpg',
-    username: 'Raul Smit',
-  ),
-  Story(
-    bg: 'assets/images/wallpapers/3.jpeg', 
-    avatar: 'assets/images/users/3.jpg',
-    username: 'Megan Lopez',
-  ),
-  Story(
-    bg: 'assets/images/wallpapers/3.jpeg', 
-    avatar: 'assets/images/users/3.jpg',
-    username: 'Megan Lopez',
-  ),
- 
- 
-];
 
-class Stories extends StatelessWidget {
+class Stories extends StatefulWidget {
   const Stories({Key? key}) : super(key: key);
+
+  @override
+  State<Stories> createState() => _StoriesState();
+}
+
+class _StoriesState extends State<Stories> {
+
+  final list = <Story>[];
+
+
+  @override
+  void initState() {
+     generated();
+    super.initState();
+  }
+
+  
+     void generated(){
+      for(int i = 0;i<5;i++){
+
+        
+     
+
+
+        final publication = Story(
+          
+
+            username:  faker.person.name(),
+            avatar: 'https://www.mundopsicologos.com/site/article/63246/53251/que-significa-ser-una-persona-autentica-9-virtudes-asociadas-a-la-autenticidad-0_ai1.jpg',
+            bg: 'http://www.centauro.com.mx/wp-content/uploads/Indicadores-de-que-eres-una-persona-feliz.jpg' ,
+
+             
+          );
+        list.add(publication);
+        setState(() {
+          
+        });
+      }
+
+    }
+
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +57,7 @@ class Stories extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) { 
-          final story = _stories[index];
+          final story = list[index];
 
           return StoryItem(
             story: story,
@@ -46,7 +65,7 @@ class Stories extends StatelessWidget {
           );
 
          },
-        itemCount: _stories.length,
+        itemCount: list.length,
         
       ),
     );

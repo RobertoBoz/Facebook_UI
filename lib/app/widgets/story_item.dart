@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_ui/app/widgets/avatar.dart';
 import 'package:facebook_ui/data/models/story.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,8 @@ class StoryItem extends StatelessWidget {
                     height: 170-20,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(image: AssetImage(story.bg),fit: BoxFit.cover, )
-                    ),
+                      image: DecorationImage(image: CachedNetworkImageProvider(story.bg,),fit: BoxFit.cover )
+                    ),                    
                     
                   ),
                 ),

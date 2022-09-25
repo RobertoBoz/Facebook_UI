@@ -83,7 +83,7 @@ class _FacebookiUState extends State<FacebookiU> {
              const SizedBox(height: 25,),
              const QuickActions(),
              const SizedBox(height: 25,),
-             const Stories(key: ValueKey('value')),
+             const Stories(),
              const SizedBox(height: 20,),
              ListView.builder( 
               physics: const NeverScrollableScrollPhysics(), 
@@ -92,7 +92,6 @@ class _FacebookiUState extends State<FacebookiU> {
                 itemBuilder: (context, index) {
                   if(  publicationsList.isEmpty){
                     return const CircularProgressIndicator();
-
                   }
                   return PublicationsItem(publications: publicationsList[index],);
                 }
