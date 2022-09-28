@@ -79,32 +79,47 @@ class _FacebookiUState extends State<FacebookiU> {
            SizedBox(width: 15,),
         ],
         ),
-        body: ListView(    
 
-          children:  [
-             const WhatIsOnYourMind(),
-             const SizedBox(height: 25,),
-             const QuickActions(),
-             const SizedBox(height: 25,),
-             const Stories(),
-             const SizedBox(height: 20,),
-             ListView.builder( 
-              physics: const NeverScrollableScrollPhysics(), 
-              shrinkWrap: true,
-                itemCount: publicationsList.length,
-                itemBuilder: (context, index) {
-                  if(  publicationsList.isEmpty){
+        body: CustomScrollView(
+          slivers: [
+          
+          SliverList(
+            delegate:SliverChildBuilderDelegate(
+              childCount: listwidget.length,
+              (context, index) {
+                
+                return listwidget[index];
+              },
+             ) 
+            ),
+
+            SliverList(
+            delegate:SliverChildBuilderDelegate(
+              childCount: publicationsList.length,
+              (context, index) {
+                 if(  publicationsList.isEmpty){
                     return const CircularProgressIndicator();
                   }
                   return PublicationsItem(
                     publications: publicationsList[index],reactions: widget.reactions,
                   );
-                }
-              )
+              },
+             ) 
+            ),
           ],
-        ),
+        )
+   
     );
   }
 }
+
+
+final listwidget = [const WhatIsOnYourMind(),
+             const SizedBox(height: 25,),
+              const QuickActions(),
+              const SizedBox(height: 25,),
+              const Stories(),
+              const SizedBox(height: 20,),
+];
 
 
