@@ -34,8 +34,8 @@ class _StoriesState extends State<Stories> {
           
 
             username:  faker.person.name(),
-            avatar: 'https://www.mundopsicologos.com/site/article/63246/53251/que-significa-ser-una-persona-autentica-9-virtudes-asociadas-a-la-autenticidad-0_ai1.jpg',
-            bg: 'http://www.centauro.com.mx/wp-content/uploads/Indicadores-de-que-eres-una-persona-feliz.jpg' ,
+            avatar: faker.image.image(random: true),
+            bg: faker.image.image(random: true) ,
 
              
           );

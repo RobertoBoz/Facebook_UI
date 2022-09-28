@@ -7,23 +7,24 @@ import 'package:timeago/timeago.dart' as timeagot ;
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PublicationsItem extends StatelessWidget {
-  const PublicationsItem({Key? key,required this.publications}) : super(key: key);
+  const PublicationsItem({Key? key,required this.publications, required this.reactions}) : super(key: key);
 
   final Publications publications;
+  final List<String> reactions; 
 
   String _getEmogiPath(Reaction reaction){
     switch(reaction){
 
       case Reaction.like:
-        return 'assets/images/emojis/like.svg';      
+        return reactions[0];      
       case Reaction.love:
-        return 'assets/images/emojis/heart.svg';      
+        return reactions[1];      
       case Reaction.laughin:
-        return 'assets/images/emojis/angry.svg';      
+        return reactions[2];      
       case Reaction.sad:
-        return 'assets/images/emojis/sad.svg';      
+        return reactions[3];      
       case Reaction.shocking:
-        return 'assets/images/emojis/shocked.svg';      
+        return reactions[4];      
     }
   }
 

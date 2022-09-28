@@ -4,16 +4,16 @@ import 'package:facebook_ui/app/widgets/stories.dart';
 import 'package:facebook_ui/data/models/publications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:faker/faker.dart';
-import 'package:facebook_ui/Theme/custom_icons.dart';
 import 'package:facebook_ui/app/widgets/WhatIsOnYourMind.dart';
 import 'package:facebook_ui/app/widgets/circule_button.dart';
 
 import 'widgets/publications_items.dart';
 
 class FacebookiU extends StatefulWidget {
-  const FacebookiU({Key? key}) : super(key: key);
+
+  const FacebookiU({Key? key,  this.reactions = const ['assets/images/emojis/like.svg','assets/images/emojis/heart.svg','assets/images/emojis/angry.svg','assets/images/emojis/sad.svg','assets/images/emojis/shocked.svg']}) : super(key: key);
+  final  List<String> reactions;
 
   @override
   State<FacebookiU> createState() => _FacebookiUState();
@@ -34,13 +34,13 @@ class _FacebookiUState extends State<FacebookiU> {
 
         const reactions = Reaction.values;
         final reactionsIndex = faker.randomGenerator.integer(reactions.length-1);
-
-
         final publication = Publications(
-            user: User(avatar: faker.image.image(), username: faker.person.name(),),
+            user: User(avatar: faker.image.image(random: true), username: faker.person.name(),),
             title: faker.lorem.sentence(), 
             createdAt: faker.date.dateTime(), 
-            imageUrl: faker.image.image(),
+            imageUrl: faker.image.image(
+              random: true
+            ),
             commentsCount: faker.randomGenerator.integer(50000), 
             shareCount: faker.randomGenerator.integer(50000), 
             currentReaction: Reaction.values[reactionsIndex], 
@@ -96,7 +96,9 @@ class _FacebookiUState extends State<FacebookiU> {
                   if(  publicationsList.isEmpty){
                     return const CircularProgressIndicator();
                   }
-                  return PublicationsItem(publications: publicationsList[index],);
+                  return PublicationsItem(
+                    publications: publicationsList[index],reactions: widget.reactions,
+                  );
                 }
               )
           ],
